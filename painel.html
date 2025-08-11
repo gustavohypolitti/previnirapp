@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel — PrevinirApp</title>
+<style>
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;background:#f8fafc;margin:0}
+  header{padding:14px 16px;background:#28c76f;color:#0b1220;display:flex;justify-content:space-between;align-items:center}
+  a{color:#0b1220;text-decoration:none;font-weight:700}
+  main{max-width:900px;margin:18px auto;padding:0 16px}
+  .card{background:#fff;border:1px solid #e6ecf4;border-radius:14px;box-shadow:0 10px 30px rgba(16,24,40,.06);padding:16px;margin-top:12px}
+  .muted{color:#64748b}
+  .row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-top:1px dashed #e2e8f0;padding:8px 0}
+  .badge{display:inline-block;padding:.25rem .5rem;border-radius:999px;background:#eef6ff;border:1px solid #dbeafe;color:#0b4fa0;font-weight:700;font-size:.75rem;margin-left:6px}
+</style></head>
+<body>
+<header>
+  <div><a href="index.html">PrevinirApp</a></div>
+  <div><a href="#" id="logout">Sair</a></div>
+</header>
+<main>
+  <h2>Meus agendamentos</h2>
+  <div id="list" class="card"><div class="muted">Carregando…</div></div>
+</main>
+<script>
+  const list = document.getElementById('list');
+  const token = localStorage.getItem('token');
+  if(!token){ location.href='login.html'; }
+
+  document.getElementById('logout').onclick = ()=>{ localStorage.removeItem('token'); location.href='login.html'; };
+
+  async function load(){
+    const r = await fetch('/v1/bookings', {headers:{'Authorization':'Bearer '+token}});
+    if(!r.ok){ list.innerHTML='<div class="muted">Falha ao carregar.</div>'; return; }
+    const data = await r.json();
+    if(!data || !data.length){ list.innerHTML='<div class="muted">Nenhum agendamento salvo até agora.</div>'; return; }
+    list.innerHTML='';
+    data.forEach(b=>{
+      const row = document.createElement('div'); row.className='row';
+      row.innerHTML = `<div><b>${b.exam}</b><span class="badge">${new Date(b.created_at).toLocaleString()}</span><div class="muted">${b.clinic_name} — ${b.clinic_address||''}</div></div>`;
+      const go = document.createElement('a'); go.href=`https://www.google.com/maps/search/${encodeURIComponent(b.clinic_name+' '+(b.clinic_address||''))}`; go.target='_blank'; go.textContent='Rotas';
+      row.appendChild(go); list.appendChild(row);
+    });
+  }
+  load();
+</script>
+</body>
+</html>

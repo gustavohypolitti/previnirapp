@@ -3,40 +3,42 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PrevinirApp — Rastreamento de Câncer Pessoal</title>
+<title>PrevinirApp — Rastreamento Personalizado</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%2328c76f' d='M12 28c0-9.94 8.06-18 18-18s18 8.06 18 18-8.06 18-18 18S12 37.94 12 28z'/%3E%3Cpath fill='%23fff' d='M31 18h2v20h-2z'/%3E%3Cpath fill='%23fff' d='M22 27h20v2H22z'/%3E%3C/svg%3E">
 <meta name="color-scheme" content="light dark">
 <style>
-  :root{
-    --bg: #0e1a2b; --brand: #16a085; --brand-2:#2ecc71; --muted:#64748b; --card:#ffffff;
-    --ink:#0b1220; --ok:#2ecc71; --warn:#e67e22; --border:#e8edf5;
-  }
+  :root{ --bg:#08131f; --brand:#28c76f; --brand-2:#00b894; --ink:#0b1220; --muted:#667085; --card:#ffffff; --border:#e6ecf4; --accent:#3b82f6; }
   *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Noto Sans,sans-serif;background:#f6f8fb;color:#0d1220;line-height:1.35}
-  header.hero{position:relative;min-height:62vh;display:grid;place-items:center;color:#fff;background:
-    linear-gradient( to bottom right, rgba(14,26,43,.75), rgba(14,26,43,.55) ),
-    url('https://images.unsplash.com/photo-1544033527-b192daee1f26?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;}
-  .hero .content{max-width:1100px;padding:48px 24px;text-align:center}
-  .logo{font-weight:800;letter-spacing:.5px;font-size:1.25rem;display:inline-flex;gap:.5rem;align-items:center;background:rgba(255,255,255,.12);padding:.5rem .9rem;border-radius:999px;margin-bottom:14px}
-  .logo b{color:#2ecc71}
-  h1{font-size:clamp(1.8rem,2.8vw,3rem);margin:.2rem 0 0.6rem}
-  .slogan{font-size:clamp(1.05rem,1.4vw,1.25rem);opacity:.95;max-width:900px;margin:0 auto 18px}
-  .slogan strong{color:#2ecc71}
-  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}
-  .btn{appearance:none;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.2px}
-  .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Noto Sans,sans-serif;background:#f5faf7;color:#0f172a;line-height:1.35}
+  a{color:var(--accent);text-decoration:none}
+  header.hero{position:relative;min-height:68vh;display:grid;place-items:center;color:#fff;background:
+    linear-gradient( to bottom right, rgba(8,19,31,.75), rgba(8,19,31,.55) ),
+    url('https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;}
+  nav{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px}
+  .brand{display:flex;gap:.6rem;align-items:center;color:#fff;font-weight:800}
+  .brand .mark{width:28px;height:28px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));border-radius:8px;color:#fff}
+  .navlinks a{color:#fff;margin-left:12px;font-weight:600;opacity:.95}
+  .hero .content{max-width:1100px;padding:64px 24px;text-align:center}
+  h1{font-size:clamp(2rem,3.4vw,3.25rem);margin:.2rem 0 .7rem}
+  .slogan{font-size:clamp(1.05rem,1.5vw,1.25rem);opacity:.96;max-width:900px;margin:0 auto 18px}
+  .slogan strong{color:#a7f3d0}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .btn{appearance:none;border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.2px}
+  .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#08131f}
   .btn.primary:hover{filter:brightness(1.05)}
-  .btn.ghost{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)}
-  main{max-width:1100px;margin:-56px auto 64px;padding:0 16px}
-  .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
-  .card{background:var(--card);border-radius:16px;border:1px solid var(--border);box-shadow:0 6px 22px rgba(15,35,68,0.06);padding:18px 16px 16px}
+  .btn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
+  main{max-width:1150px;margin:-56px auto 72px;padding:0 16px}
+  .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+  .card{background:var(--card);border-radius:18px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(16,24,40,.06);padding:18px 16px 16px}
   .card h2{margin:6px 0 6px;font-size:1.25rem}
   form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   form .row-3{grid-template-columns:repeat(3,1fr)}
-  label{display:block;font-weight:600;color:#1f2a44;margin-top:10px}
-  input,select,textarea{width:100%;padding:11px 12px;border:1px solid #d6deea;border-radius:10px;font-size:15px;outline:none;background:#fff}
-  small.help{display:block;color:var(--muted);margin-top:4px}
+  label{display:block;font-weight:600;color:#111827;margin-top:10px}
+  input,select,textarea{width:100%;padding:11px 12px;border:1px solid #d7e0ea;border-radius:10px;font-size:15px;outline:none;background:#fff}
+  input:invalid{border-color:#fecaca}
+  small.help{display:block;color:#6b7280;margin-top:4px}
   .section-title{margin:4px 0 8px;color:#0b1220;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.6px}
-  .muted{color:#64748b}
+  .muted{color:#667085}
   .results{margin-top:12px}
   .badge{display:inline-block;padding:.25rem .5rem;border-radius:999px;background:#eef6ff;border:1px solid #dbeafe;color:#0b4fa0;font-weight:700;font-size:.75rem;margin:0 .25rem .25rem 0}
   .rec{border-left:4px solid #dbeafe;padding-left:10px;margin:10px 0 14px}
@@ -47,24 +49,29 @@
   .pill-diff{background:#fff5e9;border:1px solid #ffd9b0;color:#a64800}
   .pdfbar{display:none;position:sticky;top:0;background:#fff;border:1px dashed #cbd5e1;border-radius:12px;padding:10px;margin:8px 0;z-index:2}
   .pdfbar .btn{padding:8px 12px}
-  footer{max-width:1100px;margin:0 auto 64px;padding:0 16px;color:#52607e}
+  footer{max-width:1150px;margin:0 auto 64px;padding:0 16px;color:#52607e}
   .disclaimer{font-size:.87rem}
-  @media print { header.hero, .cta, #cadastro, #como-funciona { display:none !important; } .rec{break-inside:avoid} .pdfbar{display:none !important} footer{page-break-after:avoid} }
-  @media (max-width:980px){.grid{grid-template-columns:1fr}}
+  @media print { header.hero, .cta, #cadastro, #como-funciona, nav { display:none !important; } .rec{break-inside:avoid} .pdfbar{display:none !important} footer{page-break-after:avoid} }
+  @media (max-width:980px){.grid{grid-template-columns:1fr} .navlinks{display:none}}
+  .rightnav{display:inline-flex;gap:10px;align-items:center}
 </style>
 </head>
 <body>
 <header class="hero" role="banner" aria-label="PrevinirApp">
+  <nav>
+    <div class="brand"><span class="mark">🩺</span> <span>Previnir<b>App</b></span></div>
+    <div class="navlinks rightnav">
+      <a href="sobre.html">Quem somos</a>
+      <a href="painel.html">Painel</a>
+      <a href="login.html">Entrar</a>
+    </div>
+  </nav>
   <div class="content">
-    <div class="logo" aria-label="PrevinirApp logo">🩺 <span>Previnir<b>App</b></span></div>
     <h1>Previna hoje. Viva mais.</h1>
-    <p class="slogan">
-      O câncer é uma das <strong>principais causas de morte</strong> no mundo — detecção precoce salva vidas.
-      Descubra agora <strong>quais exames de rastreamento</strong> você deve fazer para o seu perfil.
-    </p>
+    <p class="slogan">Detecção precoce salva vidas. Descubra agora <strong>quais exames de rastreamento</strong> você deve fazer para o seu perfil — com base em diretrizes do Brasil e internacionais.</p>
     <div class="cta">
       <a href="#cadastro" class="btn primary">Começar meu cadastro</a>
-      <a href="#como-funciona" class="btn ghost">Como funciona</a>
+      <a href="sobre.html" class="btn ghost">Quem somos</a>
     </div>
   </div>
 </header>
@@ -76,15 +83,15 @@
       <form id="form" novalidate>
         <div class="section-title">Dados de acesso</div>
         <div class="row">
-          <div><label for="nome">Nome</label><input id="nome" required /></div>
-          <div><label for="cpf">CPF</label><input id="cpf" inputmode="numeric" pattern="\d{11}" placeholder="Somente números" required /><small class="help">11 dígitos, sem pontos/traços.</small></div>
+          <div><label for="nome">Nome</label><input id="nome" required autocomplete="name" /></div>
+          <div><label for="cpf">CPF</label><input id="cpf" inputmode="numeric" placeholder="000.000.000-00" required /></div>
         </div>
         <div class="row">
-          <div><label for="email">E-mail</label><input id="email" type="email" required /></div>
-          <div><label for="cel">Celular</label><input id="cel" inputmode="tel" placeholder="(DDD) 9xxxx-xxxx" required /></div>
+          <div><label for="email">E-mail</label><input id="email" type="email" required autocomplete="email" /></div>
+          <div><label for="cel">Celular</label><input id="cel" inputmode="tel" placeholder="(00) 90000-0000" required /></div>
         </div>
         <div class="row">
-          <div><label for="senha">Senha</label><input id="senha" type="password" required minlength="6" /></div>
+          <div><label for="senha">Senha</label><input id="senha" type="password" required minlength="8" /></div>
           <div><label for="dob">Data de nascimento</label><input id="dob" type="date" required /></div>
         </div>
 
@@ -97,11 +104,11 @@
         <div class="section-title">Tabagismo</div>
         <div class="row-3 row">
           <div><label for="fumante">Fuma atualmente?</label><select id="fumante" required><option value="">Selecione…</option><option>Não</option><option>Ex-fumante</option><option>Sim</option></select></div>
-          <div><label for="macos_dia">Maços/dia (média)</label><input id="macos_dia" type="number" step="0.1" min="0" placeholder="ex.: 1" /></div>
-          <div><label for="anos_fumou">Anos que fumou</label><input id="anos_fumou" type="number" step="1" min="0" placeholder="ex.: 20" /></div>
+          <div><label for="macos_dia">Maços/dia (média)</label><input id="macos_dia" type="number" step="0.1" min="0" placeholder="1.0" /></div>
+          <div><label for="anos_fumou">Anos que fumou</label><input id="anos_fumou" type="number" step="1" min="0" placeholder="20" /></div>
         </div>
         <div class="row">
-          <div><label for="parou_ha">Se parou, há quantos anos?</label><input id="parou_ha" type="number" step="1" min="0" placeholder="ex.: 8" /></div>
+          <div><label for="parou_ha">Se parou, há quantos anos?</label><input id="parou_ha" type="number" step="1" min="0" placeholder="8" /></div>
           <div><label for="exposicao_passiva">Exposição passiva importante?</label><select id="exposicao_passiva"><option>Não</option><option>Sim</option></select></div>
         </div>
         <small class="help">*Pack-years = maços/dia × anos que fumou.</small>
@@ -136,7 +143,7 @@
 
   <section id="como-funciona" class="card" aria-labelledby="como-title">
     <h2 id="como-title">Como o PrevinirApp decide os exames?</h2>
-    <p>Usamos regras de elegibilidade inspiradas em diretrizes nacionais (Ministério da Saúde/INCA) e, para comparação, USPSTF/ACS/NCCN. Onde houver diferenças, mostramos <span class="badge pill-diff">divergências</span> de idade/intervalo. Este site é informativo e não substitui consulta médica.</p>
+    <p>Usamos regras inspiradas em diretrizes do Ministério da Saúde/INCA e, para comparação, USPSTF/ACS/NCCN. Onde houver diferenças, mostramos <span class="badge pill-diff">divergências</span>. Este site é informativo e não substitui consulta médica.</p>
   </section>
 </main>
 
@@ -149,156 +156,117 @@
   const pdfbar = document.getElementById('pdfbar');
   const btnPrint = document.getElementById('btn-print');
 
-  function idadeFromDOB(dob){
-    if(!dob) return null;
-    const d = new Date(dob);
-    const today = new Date();
-    let age = today.getFullYear() - d.getFullYear();
-    const m = today.getMonth() - d.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < d.getDate())) age--;
-    return age;
+  const cpfEl = document.getElementById('cpf');
+  const celEl = document.getElementById('cel');
+  const emailEl = document.getElementById('email');
+  const senhaEl = document.getElementById('senha');
+
+  function maskCPF(v){ v=v.replace(/\D/g,'').slice(0,11); v=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); return v;}
+  function maskPhone(v){ v=v.replace(/\D/g,'').slice(0,11); if(v.length<=10) return v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3').trim(); return v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3').trim();}
+  cpfEl.addEventListener('input', e=> e.target.value = maskCPF(e.target.value));
+  celEl.addEventListener('input', e=> e.target.value = maskPhone(e.target.value));
+
+  function cpfValido(cpf){
+    cpf = cpf.replace(/\D/g,'');
+    if(!cpf || cpf.length!==11 || /^([0-9])\1+$/.test(cpf)) return false;
+    let soma=0; for(let i=0;i<9;i++) soma += parseInt(cpf.charAt(i))*(10-i);
+    let d1 = 11 - (soma % 11); d1 = (d1>9)?0:d1;
+    soma=0; for(let i=0;i<10;i++) soma += parseInt(cpf.charAt(i))*(11-i);
+    let d2 = 11 - (soma % 11); d2 = (d2>9)?0:d2;
+    return d1===parseInt(cpf.charAt(9)) && d2===parseInt(cpf.charAt(10));
   }
+
+  function idadeFromDOB(dob){ if(!dob) return null; const d=new Date(dob); const t=new Date(); let age=t.getFullYear()-d.getFullYear(); const m=t.getMonth()-d.getMonth(); if(m<0||(m===0&&t.getDate()<d.getDate())) age--; return age;}
   function packYears(macosDia, anos){macosDia=parseFloat(macosDia||0);anos=parseFloat(anos||0);return +(macosDia*anos).toFixed(1);}
-  function openMaps(query, coords){
-    const base = `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
-    if(coords){ window.open(`${base}/@${coords.latitude},${coords.longitude},14z`,'_blank'); }
-    else{ window.open(base,'_blank'); }
-  }
+  function openMaps(query, coords){ const base=`https://www.google.com/maps/search/${encodeURIComponent(query)}`; if(coords){ window.open(`${base}/@${coords.latitude},${coords.longitude},14z`,'_blank'); } else { window.open(base,'_blank'); }}
+
   async function agendar(queryAgendar, examLabel){
-    let coords = null;
-    try{
-      coords = await new Promise((resolve,reject)=>{
-        navigator.geolocation.getCurrentPosition(p=>resolve(p.coords), reject, {timeout:4000});
-      });
-    }catch(e){}
-    const endpoint = '/v1/clinics';
-    let clinics = null;
-    try{
-      const url = new URL(endpoint, window.location.origin);
-      url.searchParams.set('exam', queryAgendar);
-      if(coords){ url.searchParams.set('lat', coords.latitude); url.searchParams.set('lng', coords.longitude); }
-      const res = await fetch(url.toString(), {headers:{'Accept':'application/json'}});
-      if(res.ok){ const data = await res.json(); clinics = data.clinics || null; }
-    }catch(err){ clinics = null; }
-    if(!clinics || !clinics.length){ openMaps(queryAgendar, coords); return; }
-    const modal = document.createElement('div');
-    Object.assign(modal.style,{position:'fixed',inset:'0',background:'rgba(0,0,0,.4)',display:'grid',placeItems:'center',zIndex:9999});
-    const inner = document.createElement('div');
-    inner.className='card'; inner.style.maxWidth='720px'; inner.style.width='min(94vw,720px)';
-    inner.innerHTML = `<h3>Locais próximos para: ${examLabel}</h3>`;
-    clinics.slice(0,8).forEach(cl=>{
-      const row = document.createElement('div');
-      row.style.display='flex';row.style.justifyContent='space-between';row.style.alignItems='center';
-      row.style.padding='6px 0';row.style.gap='8px';row.style.flexWrap='wrap';
-      row.innerHTML = `<div><b>${cl.name}</b><div class="muted" style="font-size:.85rem">${cl.address||''}</div>${cl.distance_km!=null?`<div class="badge">${cl.distance_km.toFixed(1)} km</div>`:''}</div>`;
-      const go = document.createElement('button'); go.className='btn'; go.type='button'; go.textContent='Abrir rotas';
-      go.onclick=()=>openMaps(cl.name+' '+(cl.address||''), {latitude:cl.lat, longitude:cl.lng});
-      row.appendChild(go); inner.appendChild(row);
-    });
-    const close = document.createElement('button'); close.className='btn'; close.textContent='Fechar'; close.style.marginTop='8px';
-    close.onclick=()=>document.body.removeChild(modal);
-    inner.appendChild(close); modal.appendChild(inner); modal.addEventListener('click', (e)=>{ if(e.target===modal) document.body.removeChild(modal); });
-    document.body.appendChild(modal);
+    let coords=null; try{ coords = await new Promise((resolve,reject)=>{ navigator.geolocation.getCurrentPosition(p=>resolve(p.coords), reject, {timeout:4000}); }); }catch(e){}
+    const endpoint='/v1/clinics'; let clinics=null;
+    try{ const url=new URL(endpoint, window.location.origin); url.searchParams.set('exam', queryAgendar); if(coords){ url.searchParams.set('lat', coords.latitude); url.searchParams.set('lng', coords.longitude); } const res=await fetch(url.toString(), {headers:{'Accept':'application/json'}}); if(res.ok){ const data=await res.json(); clinics=data.clinics||null; } }catch(err){ clinics=null; }
+    if(!clinics||!clinics.length){ openMaps(queryAgendar, coords); return; }
+    const modal=document.createElement('div'); Object.assign(modal.style,{position:'fixed',inset:'0',background:'rgba(0,0,0,.4)',display:'grid',placeItems:'center',zIndex:9999});
+    const inner=document.createElement('div'); inner.className='card'; inner.style.maxWidth='780px'; inner.style.width='min(95vw,780px)'; inner.innerHTML=`<h3>Locais próximos para: ${examLabel}</h3>`;
+    clinics.slice(0,8).forEach((cl)=>{ const row=document.createElement('div'); row.style.display='grid'; row.style.gridTemplateColumns='1fr auto'; row.style.alignItems='center'; row.style.padding='8px 0'; row.style.gap='8px'; row.style.borderTop='1px dashed #e2e8f0';
+      row.innerHTML=`<div><b>${cl.name}</b><div class="muted" style="font-size:.85rem">${cl.address||''}</div>${cl.distance_km!=null?`<div class="badge">${cl.distance_km.toFixed(1)} km</div>`:''}</div>`;
+      const actions=document.createElement('div'); actions.style.display='flex'; actions.style.gap='8px';
+      const go=document.createElement('button'); go.className='btn'; go.type='button'; go.textContent='Rotas'; go.onclick=()=>openMaps(cl.name+' '+(cl.address||''), {latitude:cl.lat, longitude:cl.lng});
+      const save=document.createElement('button'); save.className='btn primary'; save.type='button'; save.textContent='Salvar agendamento';
+      save.onclick=async()=>{ const body={ exam: examLabel, clinic: cl, user:{ nome: document.getElementById('nome').value, email: document.getElementById('email').value } };
+        try{ const res=await fetch('/v1/bookings',{method:'POST', headers:{'Content-Type':'application/json', 'Authorization': 'Bearer '+(localStorage.getItem('token')||'')}, body: JSON.stringify(body)}); if(res.ok){ alert('Agendamento salvo!'); } else if(res.status===401){ alert('Para salvar, faça login (menu Entrar).'); } else { alert('Não foi possível salvar agora.'); } }catch(e){ alert('Falha de conexão.'); } };
+      actions.appendChild(go); actions.appendChild(save); row.appendChild(actions); inner.appendChild(row); });
+    const close=document.createElement('button'); close.className='btn'; close.textContent='Fechar'; close.style.marginTop='10px'; close.onclick=()=>document.body.removeChild(modal);
+    inner.appendChild(close); modal.appendChild(inner); modal.addEventListener('click',(e)=>{ if(e.target===modal) document.body.removeChild(modal); }); document.body.appendChild(modal);
   }
+
   function addRec({titulo, quando, diretrizes, divergencia, queryAgendar}){
-    const wrap = document.createElement('div');
-    wrap.className = 'rec';
-    wrap.innerHTML = `
-      <h3>${titulo}</h3>
-      <div class="meta"><b>Periodicidade:</b> ${quando}</div>
-      <div class="meta"><b>Diretrizes base:</b> ${diretrizes}</div>
-      ${divergencia ? `<div class="badge pill-diff">Divergência: ${divergencia}</div>`:''}
-      <div class="actions"><button class="btn" type="button" aria-label="Agendar ${titulo}">Agendar</button></div>`;
-    wrap.querySelector('button').addEventListener('click',()=>agendar(queryAgendar, titulo));
-    recsEl.appendChild(wrap);
+    const wrap=document.createElement('div'); wrap.className='rec';
+    wrap.innerHTML=`<h3>${titulo}</h3><div class="meta"><b>Periodicidade:</b> ${quando}</div><div class="meta"><b>Diretrizes base:</b> ${diretrizes}</div>${divergencia?`<div class="badge pill-diff">Divergência: ${divergencia}</div>`:''}<div class="actions"><button class="btn" type="button" aria-label="Agendar ${titulo}">Agendar</button></div>`;
+    wrap.querySelector('button').addEventListener('click',()=>agendar(queryAgendar, titulo)); recsEl.appendChild(wrap);
   }
   btnPrint?.addEventListener('click', ()=>window.print());
 
   form.addEventListener('submit', e=>{
     e.preventDefault();
-    recsEl.innerHTML = ''; introEl.style.display='none'; pdfbar.style.display='block';
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)){ alert('E-mail inválido'); return; }
+    if(senhaEl.value.length<8){ alert('A senha deve ter pelo menos 8 caracteres.'); return; }
+    if(!cpfValido(cpfEl.value)){ alert('CPF inválido.'); return; }
 
-    const sexo = document.getElementById('sexo').value;
-    const dob = document.getElementById('dob').value;
-    const idade = idadeFromDOB(dob);
-    const fumante = document.getElementById('fumante').value;
-    const macos_dia = document.getElementById('macos_dia').value;
-    const anos_fumou = document.getElementById('anos_fumou').value;
-    const parou_ha = parseFloat(document.getElementById('parou_ha').value || 0);
-    const pYears = packYears(macos_dia, anos_fumou);
-    const ativo = document.getElementById('ativo').value;
-    const hf_mama = document.getElementById('hf_mama').value === 'Sim';
-    const hf_prostata = document.getElementById('hf_prostata').value === 'Sim';
-    const hf_colorretal = document.getElementById('hf_colorretal').value === 'Sim';
-    const condicoes = (document.getElementById('condicoes').value || '').toLowerCase();
+    recsEl.innerHTML=''; introEl.style.display='none'; pdfbar.style.display='block';
 
-    // Alto risco
-    const hasBRCA = /brca/.test(condicoes);
-    const chestRTyoung = /radioterapia.*tora|torac/i.test(condicoes) || /rt.*tora/i.test(condicoes);
-    const cirrose = /cirrose/.test(condicoes);
-    const dii = /doen[cç]a inflam/.test(condicoes);
-    const lynch = /lynch/.test(condicoes);
+    const sexo=document.getElementById('sexo').value;
+    const dob=document.getElementById('dob').value;
+    const idade=idadeFromDOB(dob);
+    const fumante=document.getElementById('fumante').value;
+    const macos_dia=document.getElementById('macos_dia').value;
+    const anos_fumou=document.getElementById('anos_fumou').value;
+    const parou_ha=parseFloat(document.getElementById('parou_ha').value||0);
+    const pYears=packYears(macos_dia, anos_fumou);
+    const ativo=document.getElementById('ativo').value;
+    const hf_mama=document.getElementById('hf_mama').value==='Sim';
+    const hf_prostata=document.getElementById('hf_prostata').value==='Sim';
+    const hf_colorretal=document.getElementById('hf_colorretal').value==='Sim';
+    const condicoes=(document.getElementById('condicoes').value||'').toLowerCase();
 
-    // Colo do útero — BR 25–64 (HPV primário quando disponível)
-    if (sexo === 'Feminino' && idade >= 25 && idade <= 64){
-      addRec({ titulo:'Rastreamento do colo do útero',
-        quando:'Teste de HPV como primário (quando disponível) com intervalo ampliado; com citologia, seguir periodicidade local.',
-        diretrizes:'PCDT/MS (BR)', divergencia:'EUA (USPSTF/ACS/NCCN) usam HPV primário/co-teste 25–65, tipicamente a cada 5 anos.',
-        queryAgendar:'teste HPV prevenção colo do útero laboratório' });
+    const hasBRCA=/brca/.test(condicoes);
+    const chestRTyoung=/radioterapia.*tora|torac/i.test(condicoes)||/rt.*tora/i.test(condicoes);
+    const cirrose=/cirrose/.test(condicoes);
+    const dii=/doen[cç]a inflam/.test(condicoes);
+    const lynch=/lynch/.test(condicoes);
+
+    if (sexo==='Feminino' && idade>=25 && idade<=64){
+      addRec({ titulo:'Colo do útero', quando:'Teste de HPV como primário (quando disponível) com intervalo ampliado; com citologia, seguir periodicidade local.', diretrizes:'PCDT/MS (BR)', divergencia:'EUA (USPSTF/ACS/NCCN) usam HPV primário/co-teste 25–65, ~a cada 5 anos.', queryAgendar:'teste HPV prevenção colo do útero laboratório' });
     }
-
-    // Mama — alto risco (BRCA/RT torácica) → RM + mamografia
-    if (sexo === 'Feminino' && idade >= 25){
-      const altoRiscoMama = hasBRCA || chestRTyoung || hf_mama;
-      let quando = 'INCA (BR): mamografia a cada 2 anos dos 50–69.';
-      let diverg = 'USPSTF: 40–74 bienal | ACS/NCCN: iniciar aos 40; ACS anual 45–54; alto risco considerar RM anual.';
-      if (altoRiscoMama){ quando = 'Alto risco: RM de mamas anual + mamografia, iniciar ~30 anos (individualizar).'; }
-      else if (idade < 50){ quando += ' (antes dos 50, discutir início segundo preferência/risco)'; }
-      addRec({ titulo:'Rastreamento de câncer de mama',
-        quando, diretrizes:'INCA/MS (BR) + comparação USPSTF/ACS/NCCN', divergencia:diverg,
-        queryAgendar:'mamografia ressonancia de mamas' });
+    if (sexo==='Feminino' && idade>=25){
+      const altoRiscoMama=hasBRCA||chestRTyoung||hf_mama;
+      let quando='INCA (BR): mamografia a cada 2 anos 50–69.';
+      let diverg='USPSTF: 40–74 bienal | ACS/NCCN: iniciar aos 40; ACS anual 45–54; alto risco considerar RM anual.';
+      if(altoRiscoMama){ quando='Alto risco: RM de mamas anual + mamografia, iniciar ~30 anos (individualizar).'; }
+      else if(idade<50){ quando+=' (antes dos 50, discutir início conforme preferência/risco)'; }
+      addRec({ titulo:'Mama', quando, diretrizes:'INCA/MS (BR) + USPSTF/ACS/NCCN', divergencia:diverg, queryAgendar:'mamografia ressonancia de mamas' });
     }
-
-    // Colorretal — geral 45–75; alto risco (Lynch, DII, familiar <60a) → colonoscopia precoce/intervalos curtos
-    if ( (idade >= 45 && idade <= 75) || hf_colorretal || dii || lynch ){
-      let quando = 'Iniciar aos 45: FIT anual OU DNA-fezes 1–3 anos OU colonoscopia a cada 10 anos (se normal).';
-      if (hf_colorretal || dii || lynch){ quando = 'Risco aumentado: iniciar mais cedo (p.ex. 40 ou 10 anos antes do caso mais jovem) e preferir colonoscopia com intervalos encurtados (1–3 anos).'; }
-      addRec({ titulo:'Rastreamento do câncer colorretal',
-        quando, diretrizes:'USPSTF / NCCN (ajustado para alto risco)', divergencia: (hf_colorretal||dii||lynch)?'Critérios variam entre diretrizes; seguir especialista.':null,
-        queryAgendar:'colonoscopy colonoscopia' });
+    if ( (idade>=45 && idade<=75) || hf_colorretal || dii || lynch ){
+      let quando='Iniciar aos 45: FIT anual OU DNA-fezes 1–3 anos OU colonoscopia a cada 10 anos (se normal).';
+      if(hf_colorretal||dii||lynch){ quando='Risco aumentado: iniciar mais cedo (p.ex. 40 ou 10 anos antes do caso familiar) e preferir colonoscopia com intervalos encurtados (1–3 anos).'; }
+      addRec({ titulo:'Colorretal', quando, diretrizes:'USPSTF / NCCN', divergencia:(hf_colorretal||dii||lynch)?'Critérios variam entre diretrizes; seguir especialista.':null, queryAgendar:'colonoscopy colonoscopia' });
     }
-
-    // Pulmão — LDCT
-    const elegUSPSTF = (pYears >= 20) && (idade >= 50 && idade <= 80) && (fumante === 'Sim' || (fumante === 'Ex-fumante' && parou_ha <= 15));
-    const elegACS = (pYears >= 20) && (idade >= 50 && idade <= 80) && (fumante === 'Sim' || fumante === 'Ex-fumante');
-    if (elegUSPSTF || elegACS){
-      addRec({ titulo:'Rastreamento de câncer de pulmão (TC de baixa dose)',
-        quando:'Anual enquanto elegível e candidato a tratamento curativo.',
-        diretrizes:'USPSTF (50–80, ≥20 pack-years, cessar após 15 anos sem fumar) / ACS (remove limite de 15 anos)',
-        divergencia:'Ex-fumantes >15 anos: USPSTF interrompe; ACS mantém.',
-        queryAgendar:'low dose CT tomografia de baixa dose' });
+    const elegUSPSTF=(pYears>=20)&&(idade>=50 && idade<=80)&&(fumante==='Sim'||(fumante==='Ex-fumante' && parou_ha<=15));
+    const elegACS=(pYears>=20)&&(idade>=50 && idade<=80)&&(fumante==='Sim'||fumante==='Ex-fumante');
+    if (elegUSPSTF||elegACS){
+      addRec({ titulo:'Pulmão (TC de baixa dose)', quando:'Anual enquanto elegível e candidato a tratamento curativo.', diretrizes:'USPSTF (50–80, ≥20 pack-years, cessa se >15a sem fumar) / ACS (remove limite de 15a)', divergencia:'Ex-fumantes >15 anos: USPSTF interrompe; ACS mantém.', queryAgendar:'low dose CT tomografia de baixa dose' });
     }
-
-    // Próstata — decisão compartilhada
-    if (sexo === 'Masculino' && idade >= 45){
-      let quando = 'Brasil: não há rastreamento populacional; decisão compartilhada (PSA ± toque conforme preferência/risco).';
-      let diverg = 'USPSTF: 55–69 decisão compartilhada; contra rastrear rotineiramente ≥70. NCCN/AUA individualizam por risco.';
-      if (hf_prostata) diverg += ' (História familiar favorece avaliação mais precoce).';
-      addRec({ titulo:'Avaliação para câncer de próstata (PSA ± toque)',
-        quando, diretrizes:'MS/INCA (BR) + USPSTF + NCCN/AUA', divergencia:diverg,
-        queryAgendar:'exame PSA laboratório' });
+    if (sexo==='Masculino' && idade>=45){
+      let quando='Brasil: não há rastreamento populacional; decisão compartilhada (PSA ± toque).';
+      let diverg='USPSTF: 55–69 decisão compartilhada; contra rastrear rotineiramente ≥70. NCCN/AUA individualizam por risco.';
+      if(hf_prostata) diverg+=' (História familiar favorece avaliação mais precoce).';
+      addRec({ titulo:'Próstata (PSA ± toque)', quando, diretrizes:'MS/INCA (BR) + USPSTF + NCCN/AUA', divergencia:diverg, queryAgendar:'exame PSA laboratório' });
     }
-
-    // Fígado — cirrose
-    if (/cirrose/.test(condicoes)){
-      addRec({ titulo:'Rastreamento de hepatocarcinoma (em cirrose)',
-        quando:'Ultrassom hepático + AFP a cada 6 meses.',
-        diretrizes:'Sociedades de hepatologia (prática consolidada)',
-        divergencia:null, queryAgendar:'ultrassom abdome doppler laboratório' });
+    if (cirrose){
+      addRec({ titulo:'Fígado (em cirrose)', quando:'Ultrassom hepático + AFP a cada 6 meses.', diretrizes:'Sociedades de hepatologia (prática consolidada)', divergencia:null, queryAgendar:'ultrassom abdome doppler laboratório' });
     }
 
     if(!recsEl.children.length){
-      recsEl.innerHTML = '<p class="muted">Nenhum exame padrão foi indicado pelas regras básicas. Considere discutir necessidades específicas com seu médico.</p>';
+      recsEl.innerHTML='<p class="muted">Nenhum exame padrão foi indicado pelas regras básicas. Considere discutir necessidades específicas com seu médico.</p>';
     }
   });
 </script>

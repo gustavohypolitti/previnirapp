@@ -1,0 +1,1 @@
+// Stub server.v4.js — veja instruções na conversa para a versão completa.
